@@ -7,21 +7,17 @@ import './body.scss';
 function Body() {
     return (
         <Tabs
-            defaultActiveKey="profile"
+            defaultActiveKey="now"
             id="justify-tab-example"
             className="mb-3"
             justify
         >
-            <Tab eventKey="home" title="Home">
-                <TimeSelector id="home"/>
+            <Tab eventKey="now" title="Now">
+                <TimeSelector id="now"/>
                 <Map />
             </Tab>
-            <Tab eventKey="profile" title="Profile">
-                <TimeSelector id="profile"/>
-                <Map />
-            </Tab>
-            <Tab eventKey="longer-tab" title="Loooonger Tab">
-                <TimeSelector id="longer"/>
+            <Tab eventKey="forecast" title="Forecast">
+                <TimeSelector id="forcast"/>
                 <Map />
             </Tab>
         </Tabs>
