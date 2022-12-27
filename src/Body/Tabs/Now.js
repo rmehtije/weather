@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import TimeSelector from "./TimeSelector";
 import Map from "./Map";
-import { getWeater } from '../../services/apiService';
+import { getWeather } from '../../services/apiService';
 
 function Now() {
 
     useEffect(() => {
         (async function () {
-            const weather = await getWeater();
+            const weather = await getWeather();
             const response = await weather.json();
             console.log('response', response);
         })()

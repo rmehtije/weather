@@ -8,7 +8,7 @@ export const defaultSearchParams = {
     lang: 'en',
 };
 
-export async function getWeater(data = null) {
+export async function getWeather(data = null) {
     const params = new URLSearchParams({
         ...(data || defaultSearchParams),
         appid: apiKey,

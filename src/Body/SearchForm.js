@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { getWeater, defaultSearchParams } from '../services/apiService';
+import { getWeather, defaultSearchParams } from '../services/apiService';
 
 function SearchForm() {
 
@@ -29,7 +29,7 @@ function SearchForm() {
             lang: event.target.lang.value,
         };
 
-        const weather = await getWeater(data);
+        const weather = await getWeather(data);
         const response = await weather.json();
         console.log('response', response);
     }
