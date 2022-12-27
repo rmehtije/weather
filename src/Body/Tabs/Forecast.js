@@ -9,7 +9,7 @@ function Forecast() {
         (async function () {
             const weather = await getForecast();
             const response = await weather.json();
-            console.log('response', response);
+            // console.log('response', response);
         })()
     }, []);
 
