@@ -1,21 +1,23 @@
-import { useEffect } from "react";
-import TimeSelector from "./TimeSelector";
-import Map from "./Map";
-import { getForecast } from "../../services/apiService";
+import { useEffect, useState } from 'react';
+import TimeSelector from './TimeSelector';
+import Map from './Map';
+import { getForecast } from '../../services/apiService';
 
 function Forecast() {
+    const [forecastData, setForecastData] = useState(null);
 
     useEffect(() => {
         (async function () {
-            const weather = await getForecast();
-            const response = await weather.json();
-            // console.log('response', response);
+            const response = await getForecast();
+            const data = await response.json();
+            setForecastData(data);
+            
         })()
     }, []);
 
     return (
         <>
-            <TimeSelector id="forcast" />
+            <TimeSelector data={forecastData} />
             <Map />
         </>
     );
