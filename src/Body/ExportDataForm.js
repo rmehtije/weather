@@ -28,12 +28,12 @@ function ExportDataForm() {
             ...defaultSearchParams,
             mode,
         })
-            .then((response) => response.text())
-            .then((data) => {
-                const objectData = JSON.parse(data);
-                if (objectData.cod !== 200)
+            .then(async (response) => {
+                if(!response.ok) {
+                    const objectData = await response.json();
                     throw Error(objectData.message);
-                
+                }
+                const data = await response.text();
                 window.open('about:blank').document.body.append(data);
             })
             .catch((error) => {
