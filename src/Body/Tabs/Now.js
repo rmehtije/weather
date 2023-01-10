@@ -1,38 +1,38 @@
-import { useState, useEffect } from 'react';
-import Map from './Map';
-import { getWeather } from '../../services/apiService';
-import ErrorModal from '../../ErrorModal';
-import Data from './Data';
+import { useState, useEffect } from "react";
+import Map from "./Map";
+import { getWeather } from "../../services/apiService";
+import ErrorModal from "../../ErrorModal";
+import Data from "./Data";
 
-function Now() {
+function Now({ weatherData, setWeatherData }) {
+  const [errorMessage, setErrorMessage] = useState(null);
 
-    const [errorMessage, setErrorMessage] = useState(null);
-    const [weatherData, setWeatherData] = useState(null);
+  useEffect(() => {
+    (async function () {
+      try {
+        const response = await getWeather();
+        const data = await response.json();
 
-    useEffect(() => {
-        (async function () {
-            try {
-                const response = await getWeather();
-                const data = await response.json();
+        if (data.cod !== 200) throw Error(data.message);
 
-                if(data.cod !== 200)
-                    throw Error(data.message);
-                
-                setWeatherData(data);
-            } catch (error) {
-                console.log(error);
-                setErrorMessage(error.message);
-            }
-        })()
-    }, []);
+        setWeatherData(data);
+      } catch (error) {
+        console.log(error);
+        setErrorMessage(error.message);
+      }
+    })();
+  }, [setWeatherData]);
 
-    return (
-        <>
-            <Data data={weatherData} />
-            <Map />
-            <ErrorModal message={errorMessage} handleClose={() => setErrorMessage(null)} />
-        </>
-    );
+  return (
+    <>
+      <Data data={weatherData} />
+      <Map weatherData={weatherData} />
+      <ErrorModal
+        message={errorMessage}
+        handleClose={() => setErrorMessage(null)}
+      />
+    </>
+  );
 }
 
 export default Now;
