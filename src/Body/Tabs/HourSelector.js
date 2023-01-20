@@ -4,6 +4,26 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import { useDispatch } from "react-redux";
 import { setForecastSelectedData } from "../../services/stateService";
 
+// V kazhdyj komponent mozhno peredat' properties seldushim obrazom: 
+// <Komponent props1="1" props2={const} />
+// Prinemajem v komponente properties kak my prinemajem argumenty v ljuboj funkcqii. tojest v skobkah deklariruem 
+// peremennuju function Komponent(props). 
+// Vse peredannye properties v komponent sobirajutsa v object. 
+// Vnutri komponenta properties nevozmozhno izmenit'.
+
+// V kazhdom komponente jest svojo sostojanie.
+// Sostojanie eto vnutrennie dannye komponenta.
+// Dlja raboty s sostajaniem my ispolzujem react hook useState.
+// V useState my peredajom iznachal'noe znachenija sostojanija. (null)
+// useState hook vozvroshajet massive iz dvuh svojstv.
+// 1 Peremennaja kotoraja soderzhqt v sebe znachenije peredannoe v useState
+// 2 Funkcqja kotoraja menjajet pervoe znachenije ili sostojanie
+// Pri zapuske izmenija sostojanija komponent pererisovajetsja i novoe znachenije v sostojanie peredajotsa
+
+// vse react hooki nachniajusa so slova 'use'.
+// vse izmenjajushie sostojanije funkcqii nachniajutsa s slova 'set'.
+
+
 function HourSelector({ hours }) {
   
   const [selectedHour, setSelectedHour] = useState(0);

@@ -16,7 +16,12 @@ function Now() {
   useEffect(() => {
     (async function () {
       try {
+        // Zaprosy na server i pri udachnom rasklade vozvrashajut Response object.
+        // etot object hranit v sebe status i mnogoe drugoe.
+        // takzhe hranit dannye v bufere. 
         const response = await getWeather(searchParams);
+
+        // json() funkcqja berjot etot bufer i prevrashajet jego v js object.
         const data = await response.json();
 
         if (data.cod !== 200) throw Error(data.message);

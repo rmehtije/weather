@@ -12,7 +12,12 @@ function ExportDataForm() {
 
     const dispatch = useDispatch();
 
+    // obrabotchik eventa eto prosto funkcqja kotoraja prinemajet kak argument object sobitija
+    // i prineto nazqvat' obrabot4iki s slobo 'handle'.
+    // v event object peredajotsa element s kotorqm proizoshlo sobitije, hranitsa ono v svojste 'target'.
     const handleSubmit = (event) => {
+        // preventDefault eta funcqja kotoraja otkljuchajet dejstvije sobitija kotoroe u nego po umolchaniju.
+        // Primer: dejstvije u onSubmit po umolchaniju otpravka dannyh na server. 4erez GET method.
         event.preventDefault();
 
         const mode = event.target.mode.value;
@@ -41,7 +46,12 @@ function ExportDataForm() {
                 dispatch(setErrorMessage(error.message));
             });
     };
-
+    // onSubmit eto slushatel' sobitja i trigger obrabotchika sobytija.
+    // Vsjo 4to delajet pol'zovatel' na nashem sajte vsjo jevljajetsa sobytijem.
+    // Pol'zovatel'no 4toto sdelal a brauzer peredal eto nashemu projektu.
+    // v nashem projekte slushateli zapuskajut obrabot4iki sobytij.
+    // brauzer peredajot nam object s dannymi dannogo sobitija. (event)
+    // jest ogrnomnoe koli4estvo slushatelej i vse nazvanija nachinajutsa s slovo 'on'
     return (
         <>
             <Form onSubmit={handleSubmit} className="mt-4">
