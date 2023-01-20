@@ -5,31 +5,33 @@ import HourSelector from "./HourSelector";
 import moment from "moment";
 
 function DaySelector({
-  setCurrentData,
   data,
   getCurrentData,
 }) {
+  console.log('DaySelector');
   const [selectedDay, setSelectedDay] = useState(0);
   const [days, setDays] = useState([]);
   const [hours, setHours] = useState([]);
 
   useEffect(() => {
-    const firstDay = moment.unix(data?.list[0].dt).format("DD");
-    setSelectedDay(firstDay);
-
-    const hours = [];
-    const days = [];
-
-    getCurrentData((item, day, hour) => {
-      if (!days.includes(day)) {
-        days.push(day);
+      if(data) {
+        const firstDay = moment.unix(data?.list[0].dt).format("DD");
+        setSelectedDay(firstDay);
+    
+        const hours = [];
+        const days = [];
+    
+        getCurrentData((item, day, hour) => {
+          if (!days.includes(day)) {
+            days.push(day);
+          }
+          if (!hours.includes(hour) && day === firstDay) {
+            hours.push({ hour, item: { ...item, coord: data.city.coord } });
+          }
+        });
+        setDays(days);
+        setHours(hours);
       }
-      if (!hours.includes(hour) && day === firstDay) {
-        hours.push({ hour, item: { ...item, coord: data.city.coord } });
-      }
-    });
-    setDays(days);
-    setHours(hours);
   }, [data, setSelectedDay, getCurrentData]);
 
   const handleOnChangeDays = (event) => {
@@ -63,9 +65,7 @@ function DaySelector({
         ))}
       </ButtonGroup>
       <HourSelector
-        setCurrentData={setCurrentData}
         hours={hours}
-        selectedDay={selectedDay}
       />
     </>
   );

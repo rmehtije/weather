@@ -1,20 +1,28 @@
 import { useState, useEffect } from "react";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
+import { useDispatch } from "react-redux";
+import { setForecastSelectedData } from "../../services/stateService";
 
-function HourSelector({ setCurrentData, hours }) {
+function HourSelector({ hours }) {
+  
   const [selectedHour, setSelectedHour] = useState(0);
+  console.log('HourSelector', hours);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('HourSelector useEffect');
     if (hours.length) {
-      setCurrentData(hours[0].item);
+      
+      dispatch(setForecastSelectedData(hours[0].item));
       setSelectedHour(hours[0].hour);
     }
-  }, [hours, setCurrentData, setSelectedHour]);
+  }, [hours, dispatch, setSelectedHour]);
 
   const handleOnChangeHours = (hour, item) => {
+    console.log('handleOnChangeHours');
     setSelectedHour(hour);
-    setCurrentData(item);
+    dispatch(setForecastSelectedData(item));
   };
 
   return (

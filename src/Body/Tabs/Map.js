@@ -2,6 +2,7 @@ import { GoogleMap, useJsApiLoader, InfoWindow } from "@react-google-maps/api";
 import { defaultSearchParams } from "../../services/apiService";
 
 function Map({ weatherData }) {
+  console.log('Map');
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,

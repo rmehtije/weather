@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function Header() {
+  console.log('Header');
   return (
     <Navbar bg="light" expand="lg" className="mb-4">
       <Container>

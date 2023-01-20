@@ -1,6 +1,7 @@
 import Table from 'react-bootstrap/Table';
 
 function Data({ data }) {
+    console.log('Data');
     return (
         <Table striped bordered hover>
             <tbody>

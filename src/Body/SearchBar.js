@@ -1,17 +1,26 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
 import ExportDataForm from "./ExportDataForm";
 import SearchForm from "./SearchForm";
+import { useSelector, useDispatch } from "react-redux";
+import { setShowSearchBar } from "../services/stateService";
 
-function SearchBar({ show, handleClose, setWeatherData }) {
+function SearchBar() {
+  console.log('SearchBar');
+
+  const showSearchBar = useSelector((state) => state.showSearchBar);
+
+  const dispatch = useDispatch();
+
+  const handleClose = () => dispatch(setShowSearchBar(false));
+
   return (
-    <Offcanvas show={show} onHide={handleClose}>
+    <Offcanvas show={showSearchBar} onHide={handleClose}>
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Search</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
         <SearchForm
           handleCloseBar={handleClose}
-          setWeatherData={setWeatherData}
         />
         <ExportDataForm />
       </Offcanvas.Body>
