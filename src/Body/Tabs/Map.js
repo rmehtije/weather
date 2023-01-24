@@ -16,7 +16,7 @@ function Map({ weatherData }) {
     <>
       {isLoaded && (
         <GoogleMap
-          mapContainerStyle={{ height: "500px", width: "500px" }}
+          mapContainerStyle={{ height: "500px", width: "100%" }}
           center={center}
           zoom={10}
         >
