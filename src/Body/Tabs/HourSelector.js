@@ -7,11 +7,9 @@ import { setForecastSelectedData } from "../../services/stateService";
 function HourSelector({ hours }) {
   
   const [selectedHour, setSelectedHour] = useState(0);
-  console.log('HourSelector', hours);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('HourSelector useEffect');
     if (hours.length) {
       
       dispatch(setForecastSelectedData(hours[0].item));
@@ -20,7 +18,6 @@ function HourSelector({ hours }) {
   }, [hours, dispatch, setSelectedHour]);
 
   const handleOnChangeHours = (hour, item) => {
-    console.log('handleOnChangeHours');
     setSelectedHour(hour);
     dispatch(setForecastSelectedData(item));
   };

@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setErrorMessage } from "../../services/stateService";
 
 function Now() {
-  console.log('Now');
   const [weatherData, setWeatherData] = useState(null);
   
   const searchParams = useSelector((state) => state.searchParams);
@@ -22,9 +21,7 @@ function Now() {
         if (data.cod !== 200) throw Error(data.message);
 
         setWeatherData(data);
-        console.log('DATA recieved Now');
       } catch (error) {
-        console.log(error);
         dispatch(setErrorMessage(error.message));
       }
     })();

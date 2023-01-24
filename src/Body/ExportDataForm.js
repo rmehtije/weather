@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { setErrorMessage } from '../services/stateService';
 
 function ExportDataForm() {
-    console.log('ExportDataForm');
 
     const modes = ['json', 'html', 'xml'];
     const endpoints = ['Current', 'Forecast'];

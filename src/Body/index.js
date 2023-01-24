@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import { setShowSearchBar } from "../services/stateService";
 
 function Body() {
-  console.log('Body');
 
   const dispatch = useDispatch();
 

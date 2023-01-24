@@ -2,7 +2,6 @@ import { useState } from 'react';
 import LifeComponent from './Life';
 
 const TestArrow = (props) => {
-    console.log('TestArrow');
     const [count, setCount] = useState(0);
 
     return (

@@ -3,7 +3,6 @@ import moment from "moment";
 import DaySelector from "./DaySelector";
 
 function TimeSelector({ data }) {
-  console.log('TimeSelector');
   const getCurrentData = useCallback(
     (cbFn) => {
       data?.list.forEach((item) => {

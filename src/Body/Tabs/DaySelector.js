@@ -8,7 +8,6 @@ function DaySelector({
   data,
   getCurrentData,
 }) {
-  console.log('DaySelector');
   const [selectedDay, setSelectedDay] = useState(0);
   const [days, setDays] = useState([]);
   const [hours, setHours] = useState([]);

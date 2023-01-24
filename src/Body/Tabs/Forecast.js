@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setErrorMessage } from "../../services/stateService";
 
 function Forecast() {
-  console.log('Forecast');
   const [forecastData, setForecastData] = useState(null);
 
   const searchParams = useSelector((state) => state.searchParams);
@@ -24,7 +23,6 @@ function Forecast() {
         if (+data.cod !== 200) throw Error(data.message);
 
         setForecastData(data);
-        console.log('DATA recieved Forecast');
       } catch(error) {
         dispatch(setErrorMessage(error.message));
       }

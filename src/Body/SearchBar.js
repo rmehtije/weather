@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setShowSearchBar } from "../services/stateService";
 
 function SearchBar() {
-  console.log('SearchBar');
 
   const showSearchBar = useSelector((state) => state.showSearchBar);
 

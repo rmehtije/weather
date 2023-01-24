@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSearchParams } from "../services/stateService";
 
 function SearchForm({ handleCloseBar }) {
-  console.log('SearchForm');
   
   const [selectedCity, setSelectedCity] = useState(null);
 

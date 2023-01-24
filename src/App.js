@@ -4,7 +4,6 @@ import Header from './Header';
 import ErrorModal from './ErrorModal';
 
 function App() {
-  console.log('App');
   return (
     <Container>
       <Header />
